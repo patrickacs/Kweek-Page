@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kweek Page</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    @media screen and (max-height: 740px) {
+      html {
+        font-size: 12px;
+      }
+    }
+
+    @media screen and (max-height: 770px) {
+      html {
+        font-size: 14px;
+      }
+    }
+
+    :root {
+      --background: #EFEFEF;
+      --orange: #FF8000;
+      --black: #000000;
+      --white: #FFFFFF;
+    }
+
+    #search {
+      display: flex;
+      width: 30%;
+      align-items: center;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      padding: 3px
+    }
+
+    #search button {
+      overflow: hidden;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: 0;
+      background-color: transparent;
+      left: 2px;
+      top: 2px;
+    }
+
+    #search img {
+      width: 1.5rem;
+      height: 1.5rem;
+      object-fit: cover;
+      background-color: transparent;
+    }
+
+    #search input {
+      border: 0;
+      overflow: hidden;
+      height: 2rem;
+      width: 100%;
+      padding-left: 0.5rem;
+      font-size: 1.2rem;
+      background: transparent;
+    }
+
+    .container {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: #EFEFEF;
+      /* background-color:  #FFF; */
+      width: 100vw;
+      height: 100vh;
+      scroll-behavior: smooth;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #ccc;
+    }
+
+    header img {
+      height: 6rem;
+      /* width: 200px; */
+    }
+
+    header nav ul {
+      gap: 1.875rem;
+      display: flex;
+      padding-right: 3.125rem;
+    }
+
+    header nav li {
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+      list-style: none;
+    }
+
+    header li a {
+      color: #000;
+      font-size: 1.25rem;
+      text-decoration: none;
+      font-style: italic;
+    }
+
+    main {
+      margin: 3.125rem 6.25rem 0;
+      display: flex;
+      gap: 12.5rem;
+      height: 74vh;
+      text-align: start;
+
+    }
+
+    main>div>h1 {
+      font-size: 3.75rem;
+      font-family: "Inter", sans-serif;
+      position: relative;
+      z-index: 1;
+    }
+
+    main>div>h1::before {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      width: 18.75rem;
+      height: 18.75rem;
+      border-radius: 100%;
+      background-color: #ffbb00;
+      left: 15rem;
+      top: 3.125rem;
+    }
+
+    main>div>h1::after {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      width: 25rem;
+      height: 25rem;
+      border-radius: 100%;
+      background-color: #C7EE56;
+      left: 1.875rem;
+      top: -1.25rem;
+    }
+
+    .buttons {
+      position: relative;
+      margin-top: 3.125rem;
+      display: flex;
+      gap: 1.25rem;
+      z-index: 1;
+    }
+
+    .products {
+      padding: 1.25rem 3.125rem;
+      border: 0;
+      background-color: #ffbb00;
+      color: #000;
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+    }
+
+    button:hover {
+      cursor: pointer;
+      filter: brightness(0.95)
+    }
+
+    button:active {
+      filter: brightness(0.85)
+    }
+
+    .contacts {
+      padding: 1.25rem 3.125rem;
+      border: 0;
+      background-color: #fff;
+      color: #000;
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+    }
+
+    main aside img {
+      height: 65vh;
+    }
+
+    footer {
+      background-color: #000;
+      height: 10vh;
+    }
+
+    .info {
+      display: flex;
+      /* height: 250px; */
+      width: 100vw;
+      background-color: #000;
+      padding: 0 6.25rem 0;
+      gap: 1.25rem;
+
+    }
+
+    .box {
+      /* background-color: #aeaeae; */
+      background-color: transparent;
+      width: 15.625rem;
+      height: 16.625rem;
+      transform: translateY(-50%);
+      position: relative;
+      cursor: pointer;
+
+    }
+
+    .box span {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 1.5rem;
+      bottom: 2rem;
+      /* translate: translateY(15rem); */
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      color: #fff;
+      gap: 0.5rem;
+    }
+
+    .box:nth-child(2) span,
+    .box:nth-child(2) span img {
+      color: #fff !important;
+    }
+
+    .box:hover {
+      transition: transform 0.5s;
+      transform: translateY(-60%);
+    }
+
+    .box span img {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .box img {
+      width: 15.625rem;
+      height: 16.625rem;
+      object-fit: cover;
+    }
+
+    #produtos {
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      text-align: start;
+    }
+
+    .product {
+      width: 31.25rem;
+      height: 24rem;
+      background-color: #fff;
+      transition: transform 0.2s;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .product:hover {
+      transform: translateY(-5px)
+    }
+
+    .product-image {
+      /* width: 400px; */
+      width: 100%;
+      height: 15.625rem;
+      object-fit: cover;
+      /* object-position: top; */
+
+    }
+
+    .product-info {
+      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 6.25rem;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 0.625rem;
+    }
+
+    .product-info button {
+      margin: 20px 0;
+      /* width: 100px; */
+      padding: 5px 0.625rem;
+      border-radius: 20px;
+      border: 1.5px solid #333;
+      background-color: #fff;
+      font-weight: bold;
+    }
+
+    .container>h1 {
+      font-family: "Inter", sans-serif;
+      font-size: 3.75rem;
+      /* font-size: 2rem; */
+      margin-top: 24px;
+      color: #333;
+      /* margin-left: 12rem; */
+    }
+
+    .product-info h4 {
+      color: #333;
+      font-size: 1.25rem;
+    }
+
+    .product-info span {
+      font-weight: 500;
+      color: #555;
+      margin: 20px 0;
+    }
+
+    #sobre-nos {
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      text-align: start;
+      background-color: #fff;
+    }
+
+    #banners {
+      margin: 1rem 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      text-align: start;
+      background-color: #fff;
+    }
+
+    .banner {
+      width: 96rem;
+      height: 27rem;
+      background-color: #eee;
+      padding: 1.5rem;
+      display: flex;
+    }
+
+    ;
+
+    .banner .details {
+      height: 100%;
+      display: flex;
+      /* flex-direction: column;
+  justify-content: space-between; */
+    }
+
+    .details span {
+      display: block;
+    }
+
+    .details h1 {
+      font-size: 2.75rem !important;
+    }
+
+    ;
+
+    .details button {
+      width: 300px;
+    }
+
+    div.banner .details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      /* justify-content: space-between; */
+    }
+
+    .banner button img {
+      height: 1rem
+    }
+
+    div.banner .details a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    div.banner .details button {
+      display: flex;
+      padding: 10px 0;
+      background: transparent;
+      border: 1.5px solid #000;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      font-size: 1.2rem;
+      transition: border, background-color, color, filter 0.2s;
+      padding: 10px 20px
+    }
+
+    div.banner .details button:hover {
+      border: 1.5px solid #fff;
+      background-color: #fff;
+      color: #000;
+      filter: invert(1)
+    }
+
+    div.banner aside {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    div.banner aside img {
+      width: 1100px;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /**
+ * Footer
+ */
+    .footer {
+      line-height: 1.5;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer>div {
+      max-width: 1170px;
+      margin: auto;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .footer {
+      text-align: start;
+      height: 400px;
+      background-color: #000000;
+      padding: 70px 0;
+    }
+
+    .footer-col {
+      width: 25%;
+      padding: 0 15px;
+    }
+
+    .footer-col h4 {
+      font-size: 18px;
+      color: #ffffff;
+      text-transform: capitalize;
+      margin-bottom: 35px;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .footer-col h4::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      background-color: #e9a21e;
+      height: 2px;
+      box-sizing: border-box;
+      width: 50px;
+    }
+
+    .footer-col ul li:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 16px;
+      text-transform: capitalize;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 300;
+      color: #ffffff;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: #ffffff;
+      padding-left: 8px;
+    }
+
+    .footer-col .social-links a {
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      margin: 0 10px 10px 0;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+      color: #ffffff;
+      transition: all 0.5s ease;
+    }
+
+    .footer-col .social-links a:hover {
+      color: #24262b;
+      background-color: #ffffff;
+    }
+
+    /*responsive*/
+    @media(max-width: 767px) {
+      .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media(max-width: 574px) {
+      .footer-col {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header id="header">
+      <img src="https://cdn.discordapp.com/attachments/936324453762232340/971538274348834836/unknown.png" alt="logo" />
+      <form id="search">
+        <button type="submit"><img
+            src="https://cdn.discordapp.com/attachments/936324453762232340/973262447496544376/Vector_1.png"
+            alt="asdsads" srcset=""></button>
+        <input placeholder="Pesquise produtos" type="search" name="pesquisa">
+      </form>
+      <nav>
+        <ul>
+          <li><a href="#header">Inicio</a></li>
+          <li><a href="">Kweek Coin</a></li>
+          <li><a href="https://kweekeco.com.br">Kweek Eco</a></li>
+          <li><a href="">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <h1>Todos os dias <br /> ofertas arrasadoras. <br /> Você não pode perder</h1>
+        <section class="buttons">
+          <button class="products">Produtos</button>
+          <button class="contacts">Contato</button>
+        </section>
+      </div>
+      <aside>
+        <img
+          src="https://media.discordapp.net/attachments/936324453762232340/971545236859932702/unknown.png?width=342&height=662"
+          alt="Cellphone">
+      </aside>
+    </main>
+    <div class="info">
+      <a href="#produtos" class="box">
+        <img
+          src="https://media.discordapp.net/attachments/936324453762232340/972209479573708820/dale.png?width=660&height=660"
+          alt="Escreve aqui">
+        <span>Produtos<img
+            src="https://media.discordapp.net/attachments/936324453762232340/972178276405628968/XMLID_225_.png"></span>
+      </a>
+      <a href="#sobre-nos" class="box">
+        <img src="https://cdn.discordapp.com/attachments/936324453762232340/972170467429466122/Copia_de_Orc_mago_2.png"
+          alt="Sobre nós">
+        <span>Sobre nós <img
+            src="https://media.discordapp.net/attachments/936324453762232340/972178276405628968/XMLID_225_.png"></span>
+      </a>
+    </div>
+    <h1>Produtos</h1>
+    <section id="produtos">
+      <div class="product">
+        <img class="product-image"
+          src="https://media.discordapp.net/attachments/936324453762232340/972220908292952115/Copia_de_Orc_mago_3.png" />
+        <section class="product-info">
+          <div>
+            <h4>Esportes</h4>
+            <span>Encontre oque você precisa para o seu treino</span>
+          </div>
+          <button>Compre Agora</button>
+        </section>
+      </div>
+      <div class="product">
+        <img class="product-image"
+          src="https://media.discordapp.net/attachments/936324453762232340/972224182186303548/computador.png" />
+
+        <section class="product-info">
+          <div>
+            <h4>Tecnologia</h4>
+            <span>Descubra o melhor para o seu dia com novos aparelhos</span>
+          </div>
+          <button>Compre Agora</button>
+        </section>
+      </div>
+      <div class="product">
+        <img class="product-image"
+          src="https://cdn.discordapp.com/attachments/936324453762232340/972229687663288350/Beleza.png" />
+
+        <section class="product-info">
+          <div>
+            <h4>Beleza e Saúde</h4>
+            <span>O seu cuidado importa em qualquer momento</span>
+          </div>
+          <button>Compre Agora</button>
+        </section>
+      </div>
+    </section>
+    <section id="banners">
+      <div class="banner">
+        <div class="details">
+          <h1>Não espere para entrar na diversão</h1>
+          <span>Melhores promoções de jogos e videogames.</span>
+          <a href="#"><button>Press start <img
+                src="https://cdn.discordapp.com/attachments/936324453762232340/973237796514988032/Vector.png"
+                alt="Seta para a direita"></button></a>
+        </div>
+        <aside>
+          <img src="https://cdn.discordapp.com/attachments/936324453762232340/973245521915420712/1.png"
+            alt="Jogos e Diversão">
+        </aside>
+      </div>
+      <div class="banner">
+        <div class="details">
+          <h1>Todos os materiais para sua casa a um click</h1>
+          <span>Materiais de Construção, limpeza e mais</span>
+          <a href="#"><button>Descubra aqui<img
+                src="https://cdn.discordapp.com/attachments/936324453762232340/973237796514988032/Vector.png"
+                alt="Seta para a direita"></button></a>
+        </div>
+        <aside>
+          <img src="https://cdn.discordapp.com/attachments/936324453762232340/973245522389368852/2.png"
+            alt="Materias de Construção">
+        </aside>
+      </div>
+    </section>
+    <!-- <section id="sobre-nos">
+
+    </section> -->
+    <footer class="footer">
+      <div>
+        <div class="row">
+          <div class="footer-col">
+            <h4>Empresa</h4>
+            <ul>
+              <li><a href="#">Nossos Serviços</a></li>
+              <li><a href="#">Política e Privacidade</a></li>
+              <li><a href="#">Programa de Afiliado</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ajuda</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Entrega</a></li>
+              <li><a href="#">Reembolso</a></li>
+              <li><a href="#">Status de compra</a></li>
+              <li><a href="#">Opções de pagamento</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>online shop</h4>
+            <ul>
+              <li><a href="#">Relógios</a></li>
+              <li><a href="#">Mochilas</a></li>
+              <li><a href="#">Tênis</a></li>
+              <li><a href="#">Celulares</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contato</h4>
+            <div class="social-links">
+              <a target="_blank" href="https://twitter.com/KweekCoin"><i class="fab fa-twitter"></i></a>
+              <a target="_blank" href="https://www.instagram.com/kweekcoin/"><i class="fab fa-instagram"></i></a>
+              <a target="_blank" href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a target="_blank" href="reddit.com/r/Kweek/"><i class="fab fa-reddit"></i></a>
+              <a target="_blank" href="https://discord.gg/pUncfE4HvA"><i class="fab fa-discord"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="https://kit.fontawesome.com/49a9fed381.js" crossorigin="anonymous"></script>
+</body>
+</html>
